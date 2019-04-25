@@ -27,11 +27,12 @@ public class AngleTest : MonoBehaviour
         float frme = Time.deltaTime;
         print(frme);
         temp = RotationCh * Time.deltaTime;
+
         TimeCheck += Time.deltaTime;
 
         if (RotationTime >= TimeCheck)
       
-            transform.Rotate(Vector3.up, temp, Space.World);
+            transform.Rotate(Vector3.up);
 
 
         if (Input.GetKeyDown(KeyCode.Space) && !isRotation)

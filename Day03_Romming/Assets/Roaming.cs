@@ -44,8 +44,19 @@ public class Roaming : MonoBehaviour
         Vector3 dir = nextPoint - transform.position;
         dir.y = 0;
         //transform.Rotate(Vector3.up * Vector3.Angle(transform.forward, dir) * 10f * Time.deltaTime);
-        transform.Rotate(Vector3.up * Vector3.SignedAngle(transform.forward, dir, Vector3.up) * 10f * Time.deltaTime);
-        transform.position = transform.position + dir.normalized * speed * Time.deltaTime;
-      
-    }
+        //transform.Rotate(Vector3.up * Vector3.SignedAngle(transform.forward, dir, Vector3.up) * 10f * Time.deltaTime);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir, Vector3.up), 0.15f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15f); // LookRotation : 바라보는 곳이 어디냐. foword 방향이 어디냐
+
+
+
+        //transform.position = transform.position + dir.normalized * speed * Time.deltaTime;
+        //transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        //transform.position = Vector3.Lerp(transform.position, nextPoint, speed * Time.deltaTime); // 캐릭터 현재 위치에서의 거리 값.(등속x)
+        //transform.position = Vector3.Lerp(transform.position, nextPoint, speed * Time.deltaTime / dir.magnitude);
+        transform.position = Vector3.MoveTowards(transform.position, nextPoint, speed * Time.deltaTime);
+        //transform.position = Vector3.Slerp(transform.position, nextPoint, speed * Time.deltaTime);
+        //transform.position = Vector3.Slerp(transform.position, nextPoint, speed * Time.deltaTime / dir.magnitude);
+
+    }   
 }
