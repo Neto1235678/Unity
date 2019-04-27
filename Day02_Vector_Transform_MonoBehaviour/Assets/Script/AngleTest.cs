@@ -9,6 +9,7 @@ public class AngleTest : MonoBehaviour
     public float RotationTime;
     float TimeCheck;
     float temp;
+    float Test;
     bool isRotation = false;
 
     // Start is called before the first frame update
@@ -23,16 +24,14 @@ public class AngleTest : MonoBehaviour
     void Update()
     {
 
-        float RotationCh = Angle / RotationTime;
-        float frme = Time.deltaTime;
-        print(frme);
-        temp = RotationCh * Time.deltaTime;
+
+        temp = Angle / RotationTime * Time.deltaTime;
+        
 
         TimeCheck += Time.deltaTime;
 
         if (RotationTime >= TimeCheck)
-      
-            transform.Rotate(Vector3.up);
+            transform.Rotate(Vector3.up, temp);
 
 
         if (Input.GetKeyDown(KeyCode.Space) && !isRotation)
