@@ -6,7 +6,7 @@ public class ChMove : MonoBehaviour
 {
 
     Rigidbody rb;
-    bool toggle = false;
+    //bool toggle = false;
     public GameObject gob;
     public float Speed;
 
@@ -21,27 +21,29 @@ public class ChMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (toggle == false)
-            {
-                toggle = true;
-            }
-            else
-            {
-                toggle = false;
-            }
 
-            if (toggle == true)
-            {
                 transform.parent = null;
                 rb.AddForce(new Vector3(150f, 600f, 0f) );
                 rb.isKinematic = false;
-            }
+     
         }
-        
 
+        //if (toggle == false)
+        //{
+        //    toggle = true;
+        //}
+        //else
+        //{
+        //    toggle = false;
+        //}
 
+        //if (toggle == true)
+        //{
+        //    transform.parent = null;
+
+        //}
         //if (transform.)
-        
-            
+
+
     }
 }

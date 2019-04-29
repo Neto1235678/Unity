@@ -14,7 +14,7 @@ public class BarMove : MonoBehaviour
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
         if (Input.GetKey(KeyCode.D))
             transform.Translate(-Vector3.left * Speed * Time.deltaTime);
-
+        
 
     }
 }
