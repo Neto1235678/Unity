@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed25bb09b3d6d2438abed3b85cec7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 90
-  duration: 1
+  angle: 360
+  duration: 4
 --- !u!1 &1178260629
 GameObject:
   m_ObjectHideFlags: 0
