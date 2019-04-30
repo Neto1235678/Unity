@@ -38,7 +38,7 @@ public class Seletion : MonoBehaviour
         if (isRotating)
         {
             float anglePerFrame = (remainingAngle / remainingDuration) * Time.deltaTime;
-            for (float f = remainingAngle; f >= anglePerFrame; f -= remainingDuration)
+            for (float f = remainingAngle; f >= anglePerFrame; f -= anglePerFrame)
             {
                 if (remainingAngle < anglePerFrame)
                 {

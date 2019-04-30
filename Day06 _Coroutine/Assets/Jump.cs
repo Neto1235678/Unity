@@ -19,42 +19,52 @@ public class Jump : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                rb.AddForce(Vector3.up * 500f);
+            rb.AddForce(Vector3.up * 700f);
+            yield return new WaitForSeconds(1f);
+
+            rb.AddForce(Vector3.up * 700f);
+            yield return new WaitForSeconds(2f);
+
+            rb.AddForce(Vector3.up * 700f);
+            rb.maxAngularVelocity = 100f;
+            rb.angularVelocity = Vector3.up * 30;
+            rb.angularDrag = 2;
+            yield return null;
             }
-        
-        yield return null;
-        StartCoroutine(Tobo2());
+
+         
 
 
 
     }
 
-    IEnumerator Tobo2()
-    {
+    //IEnumerator Tobo2()
+    //{
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(Vector3.up * 500f);
-                //rb.angularVelocity = Vector3.up * 60;
-                //rb.angularDrag = 1;
-            }
-     
-        yield return null;
-        StartCoroutine(Tobo3());
+    //        if (Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            rb.AddForce(Vector3.up * 700f);
+    //            //rb.angularVelocity = Vector3.up * 60;
+    //            //rb.angularDrag = 1;
+    //        }
 
-    }
+    //    yield return null;
+    //    StartCoroutine(Tobo3());
 
-    IEnumerator Tobo3()
-    {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(Vector3.up * 500f);
-                rb.angularVelocity = Vector3.up * 60;
-                rb.angularDrag = 1;
-            }
-        yield return null;
-        StartCoroutine(Todo());
-    }
+    //}
+
+    //IEnumerator Tobo3()
+    //{
+    //        if (Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            rb.AddForce(Vector3.up * 700f);
+    //            rb.maxAngularVelocity = 100f;
+    //            rb.angularVelocity = Vector3.up * 30;
+    //            rb.angularDrag = 2;
+    //        }
+    //    yield return null;
+    //    StartCoroutine(Todo());
+    //}
 
     private void Update() // 물리 시뮬레이션은 Fixed에 넣어야된다. 가변적으로 바뀌면 물리 시뮬레이션도 가변적이다.
     {
