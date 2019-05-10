@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     public GameObject bulletHolePrefab;
     public GameObject holdPos; // 집은 물건의 위치
 
+
     Camera fpsCamera;
     float nextTimeToFire = 0f;
     Vector3 originPos, smoothVel;
@@ -22,6 +23,9 @@ public class Gun : MonoBehaviour
     Transform originParent; // hold될 transform의 기존 부모
     //Transform fx;
     //Transform shell;
+
+    public int count = 10;
+    int a;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,8 @@ public class Gun : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
-            nextTimeToFire = Time.time + 1f / fireRate;
+
+                nextTimeToFire = Time.time + 1f / fireRate;
 
             if (isHolding)
             {
@@ -119,7 +124,17 @@ public class Gun : MonoBehaviour
             {
                 hit.rigidbody.AddForce(fpsCamera.transform.forward * 500f);
             }
+
+            var br = hit.transform.GetComponent<BulletSound>();
+            if (br != null)
+                br.Play();
+            var brs = hit.transform.GetComponent<BulletRandomSound>();
+            if (brs != null)
+                brs.Play();
+
         }
+
+        GetComponent<AudioSource>().Play();
 
         GameObject fx = Instantiate(impactFX, hit.point, Quaternion.identity);
         Destroy(fx, 0.3f);
@@ -138,9 +153,11 @@ public class Gun : MonoBehaviour
 
     private void MakeBulletHole(Vector3 point, Vector3 normal, Transform parent)
     {
-        var clone = Instantiate(bulletHolePrefab, point + normal * 0.01f, Quaternion.FromToRotation(-Vector3.forward, normal));
-        clone.transform.parent = parent;
-        Destroy(clone, 3f);
+
+                var clone = Instantiate(bulletHolePrefab, point + normal * 0.01f, Quaternion.FromToRotation(-Vector3.forward, normal));
+                clone.transform.parent = parent;
+                Destroy(clone, 3f);
+        
     }
 
     private void MakeShell()

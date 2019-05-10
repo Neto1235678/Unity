@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 7215442}
   - component: {fileID: 7215443}
   - component: {fileID: 7215444}
+  - component: {fileID: 7215445}
   m_Layer: 0
   m_Name: Human
   m_TagString: Untagged
@@ -193,6 +194,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7215445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825627a87d4da954383207d698ed6f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
 --- !u!1 &48332680
 GameObject:
   m_ObjectHideFlags: 0
