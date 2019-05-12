@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public float fireRate = 10; // 초당 격발 횟수
+    public float fireRate = 1; // 초당 격발 횟수
     public Light muzzleFlash;
     public GameObject shellPrefab;
     public Transform shellEjection;
     public GameObject impactFX;
     public GameObject bulletHolePrefab;
     public GameObject holdPos; // 집은 물건의 위치
-
+    public AudioClip clip;
+    public AudioClip clip1;
 
     Camera fpsCamera;
     float nextTimeToFire = 0f;
@@ -21,11 +21,14 @@ public class Gun : MonoBehaviour
     float recoilVel;
     bool isHolding = false; // 물건을 들고 있는지 판단
     Transform originParent; // hold될 transform의 기존 부모
-    //Transform fx;
-    //Transform shell;
+                            //Transform fx;
+                            //Transform shell;
+    Animator anim;
+    bool ReLaod = true;
+    AudioSource sound;
 
-    public int count = 10;
-    int a;
+    public int count = 30;
+    //public GameObject obj;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,11 @@ public class Gun : MonoBehaviour
         fpsCamera = GetComponentInParent<Camera>();
         originPos = transform.localPosition;
         //shell = transform.GetChild(1).transform;
+        anim = GetComponent<Animator>();
+        sound = GetComponent<AudioSource>();
+        //obj = GameObject.Find("CountText");
+     
+
     }
 
     // Update is called once per frame
@@ -44,31 +52,55 @@ public class Gun : MonoBehaviour
         {
             Holding();
         }
-
+        
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
-
-                nextTimeToFire = Time.time + 1f / fireRate;
-
-            if (isHolding)
+            if (count > 0)
             {
-                Throwing();
+                nextTimeToFire = Time.time + 1f / fireRate;
+                count--;
+
+                if (isHolding)
+                {
+                    Throwing();
+                }
+                else
+                {
+                    Shoot();
+                }
+                print(count);
+                GetComponent<AudioSource>().Play();
+
             }
             else
             {
-                Shoot();
+                sound.PlayOneShot(clip1, 0.1f);
             }
+
         }
+            // kick damping
+            // SmoothDamp: 스프링처럼 돌아옴(Lerp이랑 비슷)
 
-        // kick damping
-        // SmoothDamp: 스프링처럼 돌아옴(Lerp이랑 비슷)
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition,
-                                                     originPos,
-                                                     ref smoothVel,
-                                                     0.1f);
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition,
+                                                         originPos,
+                                                         ref smoothVel,
+                                                         0.1f);
+        
+            // recoil damping
+            recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilVel, 0.2f);
+        
 
-        // recoil damping
-        recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilVel, 0.2f);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            anim.SetBool("ReLaod", true);
+            count = 30;
+            sound.PlayOneShot(clip, 0.3f);
+
+        }
+        else
+        {
+            anim.SetBool("ReLaod", false);
+        }
     }
 
     private void Holding()
@@ -133,8 +165,6 @@ public class Gun : MonoBehaviour
                 brs.Play();
 
         }
-
-        GetComponent<AudioSource>().Play();
 
         GameObject fx = Instantiate(impactFX, hit.point, Quaternion.identity);
         Destroy(fx, 0.3f);

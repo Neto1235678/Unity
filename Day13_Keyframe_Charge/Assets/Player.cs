@@ -11,6 +11,12 @@ public class Player : MonoBehaviour
 
     Rigidbody rb;
     Animator anim;
+
+    public AudioClip clip;
+    AudioSource sound;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +27,7 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -50,10 +57,15 @@ public class Player : MonoBehaviour
                     rb.velocity = new Vector3(0f, jumpPressure, 0f);
                     jumpPressure = 0f;
                     onGround = false;
+
                     anim.SetFloat("JumoPressure", 0f);
                     anim.SetBool("OnGround", onGround);
-                    anim.speed = 0.1f;
-                }
+                    //anim.SetBool("OnLanding", true);
+                    anim.speed = 1f;
+                    sound.PlayOneShot(clip, 0.5f);
+                    
+\
+                }              
             }
         }
     }

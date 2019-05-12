@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
+public class OpenDoCounTeor : MonoBehaviour
 {
     Camera fpsCamera;
     // Start is called before the first frame update
