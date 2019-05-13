@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
                     anim.speed = 1f;
                     sound.PlayOneShot(clip, 0.5f);
                     
-\
+
                 }              
             }
         }
