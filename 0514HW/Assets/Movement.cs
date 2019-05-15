@@ -5,74 +5,59 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float RotateSpeed;
-    float MoveSpeed = 5f;
+    public float MoveSpeed;
     Vector3 moveDirection = Vector3.zero;
     Rigidbody rb;
     public GameObject cmr;
-    public float mouseSensitivityX = 2f;
-    public float mouseSensitivityY = 2f;
+    public float ZoomSpeed;
+    Camera camera;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        camera = GetComponent<Camera>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //float h = Input.GetAxisRaw("Horizontal");
-        //float v = Input.GetAxisRaw("Vertical");
-        //moveDirection = new Vector3(h, 0f, v).normalized;
-        //moveDirection *= moveSpeed;
-        //transform.LookAt(transform.position + moveDirection);
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(Vector3.up * RotateSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(-Vector3.up * RotateSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(-Vector3.forward * MoveSpeed * Time.deltaTime);
-        }
 
         if (Input.GetMouseButton(1))
         {
-            float mousePos = Input.mousePosition.x;
-            float _mousePos = Input.mousePosition.y;
-
-            cmr.transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") );
-            cmr.transform.Rotate(Vector3.right, Input.GetAxis("Mouse Y") );
-
-
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+            moveDirection = new Vector3(h, 0f, v).normalized;
+            moveDirection *= MoveSpeed;
+            transform.Translate(moveDirection * Time.deltaTime);
         }
 
-    
+        else
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Rotate(Vector3.up * RotateSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Rotate(-Vector3.up * RotateSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(-Vector3.forward * MoveSpeed * Time.deltaTime);
+            }
+        }
 
-
-
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    if (Input.GetKeyDown(KeyCode.D))
-        //        transform.Translate(Vector3.left * MoveSpeed * Time.deltaTime);
-        //}
-
+        float zoom = Input.GetAxisRaw("Mouse ScrollWheel");
+        Vector3 zoomin = new Vector3(0, 0, zoom);
+        zoomin *= ZoomSpeed;
+        cmr.transform.Translate(zoomin * Time.deltaTime);
     }
-
-    //private void FixedUpdate()
-    //{
-    //    Vector3 move = moveDirection * Time.fixedDeltaTime;
-    //    rb.MovePosition(rb.position + move);
-    //}
 }
 
 
