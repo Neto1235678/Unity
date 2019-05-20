@@ -926,6 +926,7 @@ MonoBehaviour:
     m_Bits: 256
   groundChecker: {fileID: 45046343}
   weaponHolder: {fileID: 1117371286}
+  target: {fileID: 0}
 --- !u!136 &1690525602
 CapsuleCollider:
   m_ObjectHideFlags: 0

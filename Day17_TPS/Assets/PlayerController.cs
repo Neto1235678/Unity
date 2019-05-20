@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-   public void FrameMove()
+    public void FrameMove()
     {
         isGrounded = Physics.SphereCast(groundChecker.position,
                                         0.2f,
@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
         rb.drag = 0;
         angle = 0;
     }
+
 
     public GameObject GetNearestWeaponIn(float radius, float angle, string weaponTag)
     {

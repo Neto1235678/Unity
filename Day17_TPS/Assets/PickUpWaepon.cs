@@ -19,17 +19,19 @@ public class PickUpWaepon : StateMachineBehaviour
     {
         if(weaponHolder.childCount == 0 && stateInfo.normalizedTime > 0.22f)
         {
-            GameObject weapon = pc.GetNearestWeaponIn(radius: 1.5f, angle: 180f, weaponTag: "RightWeapon");
-            if (weapon == null)
-                return;
-            weapon.GetComponent<Rigidbody>().isKinematic = true;
-            Collider[] colliders = weapon.GetComponents<Collider>();
-            foreach (var c in colliders)
-                c.enabled = false;
-            weapon.transform.SetParent(weaponHolder);
-            weapon.transform.localPosition = Vector3.zero;
-            weapon.transform.localRotation = Quaternion.identity;
+                GameObject weapon = pc.GetNearestWeaponIn(radius: 1.5f, angle: 180f, weaponTag: "RightWeapon");
+                if (weapon == null)
+                    return;
+                weapon.GetComponent<Rigidbody>().isKinematic = true;
+                Collider[] colliders = weapon.GetComponents<Collider>();
+                foreach (var c in colliders)
+                    c.enabled = false;
+                weapon.transform.SetParent(weaponHolder);
+                weapon.transform.localPosition = Vector3.zero;
+                weapon.transform.localRotation = Quaternion.identity;
+            
         }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
