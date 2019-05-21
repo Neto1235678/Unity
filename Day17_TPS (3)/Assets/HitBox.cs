@@ -88,9 +88,15 @@ public class HitBox : MonoBehaviour
 
     public void UpdateHitBox()
     {
-     //   if (list == null)
-     //       return;
-        list.Clear();
+        if (list == null)
+        {
+            list = new List<Collider>();
+            
+        }
+        else
+        {
+            list.Clear();
+        }
 
         if (state == ColliderState.Closed)
             return;
@@ -99,14 +105,21 @@ public class HitBox : MonoBehaviour
             if (c.GetType() == typeof(BoxCollider))
             {
                 BoxCollider bc = (BoxCollider)c;
-                Collider[] colliders = Physics.OverlapBox(transform.TransformPoint(bc.center), bc.size * 0.5f, transform.rotation, mask, QueryTriggerInteraction.Collide); // TransformD~ 로테이션만 스케일 무시, TransfomVector3는 스케일도 포험, Point는 모든 정보(위치 로테 스케일 다)
+                Collider[] colliders = Physics.OverlapBox(transform.TransformPoint(bc.center), 
+                                                          bc.size * 0.5f, 
+                                                          transform.rotation, 
+                                                          mask, 
+                                                          QueryTriggerInteraction.Collide); // TransformD~ 로테이션만 스케일 무시, TransfomVector3는 스케일도 포험, Point는 모든 정보(위치 로테 스케일 다)
 
                 list.AddRange(colliders);
             }
             if (c.GetType() == typeof(SphereCollider))
             {
                 SphereCollider sc = (SphereCollider)c;
-                Collider[] colliders = Physics.OverlapSphere(transform.TransformPoint(sc.center), sc.radius, mask, QueryTriggerInteraction.Collide);
+                Collider[] colliders = Physics.OverlapSphere(transform.TransformPoint(sc.center), 
+                                                            sc.radius, 
+                                                            mask, 
+                                                            QueryTriggerInteraction.Collide);
 
                 list.AddRange(colliders);
             }
