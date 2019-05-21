@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/0509HW/0509HW.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0

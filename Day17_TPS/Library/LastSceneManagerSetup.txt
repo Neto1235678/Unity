@@ -1,5 +1,0 @@
-sceneSetups:
-- path: C:/Users/soqlt/Unity/Unity/Day17_TPS (3)/Assets/Scenes/SampleScene.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
