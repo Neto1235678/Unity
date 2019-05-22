@@ -47,7 +47,7 @@ public class HitBox : MonoBehaviour
         if(updateInEditor && !Application.isPlaying)
         {
             UpdateHitBox();
-            print("UpdateHitBox");
+            //print("UpdateHitBox");
         }
 
         //UpdateHitBox(); 우리가 따로 불러서 써야된다. 필요한 시점에서만 사용
@@ -132,7 +132,7 @@ public class HitBox : MonoBehaviour
             //if (reponder != null)
             //    reponder.collisionWith(c);
 
-            print("colliding: " +  c.name);
+            //print("colliding: " +  c.name);
         }
 
         state = list.Count > 0 ? ColliderState.Colliding : ColliderState.Open;
