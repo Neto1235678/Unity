@@ -22,14 +22,21 @@ public class NoWeaponLocomotionBT : StateMachineBehaviour
         {
             animator.SetTrigger("PickupWeapon");
         }
+
         if (Input.GetKeyDown(KeyCode.X) && pc.isDisarmed && !pc.isEquipped && !animator.IsInTransition(0))
+        {
             animator.SetTrigger("Equip");
+        }
+        if (Input.GetKeyDown(KeyCode.C) && !animator.IsInTransition(0))
+        {
+            animator.SetTrigger("ComboAttack");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

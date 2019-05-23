@@ -12,7 +12,7 @@ public enum ColliderState
 
 public interface IHitBoxResponder
 {
-    void collisionWith(Collider collider);
+    void collisionWith(Collider collider, HitBox hitBox);
 }
 
 
@@ -29,11 +29,14 @@ public class HitBox : MonoBehaviour
 
     List<Collider> list;
     IHitBoxResponder reponder = null;
+    Dictionary<int, int> hitObjects;
 
+    public bool enableMultipleHits { get; set; }
 
     private void Awake()
     {
         list = new List<Collider>();
+        hitObjects = new Dictionary<int, int>();
     }
 
 
@@ -61,12 +64,44 @@ public class HitBox : MonoBehaviour
                 BoxCollider bc = (BoxCollider)c;
                 Gizmos.DrawCube(bc.center, bc.size);
             }
-            if (c.GetType() == typeof(SphereCollider))
-            {
-                SphereCollider sc = (SphereCollider)c;
-                Gizmos.DrawSphere(sc.center, sc.radius);
-            }
+            //if (c.GetType() == typeof(SphereCollider))
+            //{
+            //    SphereCollider sc = (SphereCollider)c;
+            //    Gizmos.DrawSphere(sc.center, sc.radius);
+            //}
         }
+    }
+
+    public void GetContactInfo(Vector3 from, 
+                                 Vector3 to, 
+                                 out Vector3 hitPoint, 
+                                 out Vector3 hitNormal, 
+                                 out Vector3 hitDirection, 
+                                 int mask, 
+                                 float maxDirtance)
+    {
+        RaycastHit hit;
+        hitPoint = to;
+        hitNormal = from;
+        hitNormal = hitNormal.normalized;
+        hitDirection = -hitNormal;
+        if (Physics.Raycast(from,
+                            hitDirection,
+                            out hit,
+                            maxDirtance,
+                            mask,
+                            QueryTriggerInteraction.Collide))
+        {
+            hitPoint = hit.point;
+            hitNormal = hit.normal;
+
+        }
+
+
+        Debug.Log("OneHit: " + name);
+        Debug.DrawLine(from, hitPoint, Color.yellow, 2f);
+        Debug.DrawLine(hitPoint, hitPoint + hitNormal, Color.magenta, 2f);
+        Debug.DrawLine(hitPoint, hitPoint + hitDirection, Color.cyan, 2f);
     }
 
     private void CheckGizomColor()
@@ -127,12 +162,19 @@ public class HitBox : MonoBehaviour
 
         foreach (var c in list)
         {
-            // C# 6.0
-            reponder?.collisionWith(c);
-            //if (reponder != null)
-            //    reponder.collisionWith(c);
+            int id = c.transform.root.gameObject.GetInstanceID();
+            if (!hitObjects.ContainsKey(id))
+                hitObjects[id] = 1;
+            else
+            {
+                hitObjects[id] += 1;
+                if (!enableMultipleHits)
+                    continue;
+            }
 
-            //print("colliding: " +  c.name);
+            // C# 6.0
+            reponder?.collisionWith(c, this);
+
         }
 
         state = list.Count > 0 ? ColliderState.Colliding : ColliderState.Open;
@@ -141,6 +183,7 @@ public class HitBox : MonoBehaviour
     public void StartCheckingCollsion()
     {
         state = ColliderState.Open;
+        hitObjects.Clear();
     }
 
     public void StopCheckingCollsion()
