@@ -84,3 +84,4 @@ public class HitCheck : StateMachineBehaviour, IHitBoxResponder
 
 // 무기 단위로 정리, 줍고 차고 빼고 어택까지
 // 코드 정리 및 몹 하나 넣기 판단까지, 필요하면 리액션까지.
+// 점프 공중동작

@@ -1391,6 +1391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1799425295}
+  state: 2
 --- !u!1 &1456348635
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,10 +11,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 356005747235574689}
-    m_Position: {x: 280, y: 110, z: 0}
+    m_Position: {x: 260, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -115115731555711997}
-    m_Position: {x: 270, y: 200, z: 0}
+    m_Position: {x: 260, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3298558823161423427}
     m_Position: {x: 510, y: 200, z: 0}
@@ -37,7 +37,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: OnMove
+    m_ConditionEvent: OnRun
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -115115731555711997}
@@ -83,7 +83,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Run
-  m_Speed: 0.7
+  m_Speed: 1.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 663985120915710952}
@@ -113,7 +113,7 @@ AnimatorController:
   m_Name: Monstor
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: OnMove
+  - m_Name: OniDle
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -181,7 +181,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: OnRun
+    m_ConditionEvent: OniDle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 356005747235574689}
@@ -205,7 +205,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1885084978908548266}
