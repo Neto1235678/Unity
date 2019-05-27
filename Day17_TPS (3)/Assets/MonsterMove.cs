@@ -21,25 +21,33 @@ public class MonsterMove : MonoBehaviour
     float dir;
     public MoveState state = MoveState.iDle;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        setposition = new Vector3(transform.localPosition.x, 
-                                  transform.localPosition.y, 
-                                  transform.localPosition.z);
+        //setposition = new Vector3(transform.localPosition.x, 
+        //                          transform.localPosition.y, 
+        //                          transform.localPosition.z);
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        getposition = new Vector3(transform.localPosition.x, 
-                                  transform.localPosition.y, 
-                                  transform.localPosition.z);
-        dir = Vector3.Distance(target.position, transform.position);
 
-        StateCheck();
+        Vector3 dir1 = target.position - transform.position;
+        float angle = Vector3.Angle(dir1, transform.forward);
+        anim.SetFloat("Angle", angle);
+        anim.SetFloat("Distance", dir1.magnitude);
+
+        //getposition = new Vector3(transform.localPosition.x, 
+        //                          transform.localPosition.y, 
+        //                          transform.localPosition.z);
+        //dir = Vector3.Distance(target.position, transform.position);
+
+        //StateCheck();
     
     }
 

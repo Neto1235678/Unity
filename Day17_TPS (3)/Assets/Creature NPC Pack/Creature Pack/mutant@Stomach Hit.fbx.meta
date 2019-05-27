@@ -1,11 +1,242 @@
 fileFormatVersion: 2
-guid: 11ab93cb86da279479b4fb09a53ea748
+guid: d40d062939907b6488456c35c10c628d
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
+      1: 100000
+    second: Mutant:Head
+  - first:
+      1: 100002
+    second: Mutant:HeadTop_End
+  - first:
+      1: 100004
+    second: Mutant:Hips
+  - first:
+      1: 100006
+    second: Mutant:LeftArm
+  - first:
+      1: 100008
+    second: Mutant:LeftFoot
+  - first:
+      1: 100010
+    second: Mutant:LeftForeArm
+  - first:
+      1: 100012
+    second: Mutant:LeftHand
+  - first:
+      1: 100014
+    second: Mutant:LeftLeg
+  - first:
+      1: 100016
+    second: Mutant:LeftShoulder
+  - first:
+      1: 100018
+    second: Mutant:LeftToe_End
+  - first:
+      1: 100020
+    second: Mutant:LeftToeBase
+  - first:
+      1: 100022
+    second: Mutant:LeftUpLeg
+  - first:
+      1: 100024
+    second: Mutant:Neck
+  - first:
+      1: 100026
+    second: Mutant:RightArm
+  - first:
+      1: 100028
+    second: Mutant:RightFoot
+  - first:
+      1: 100030
+    second: Mutant:RightForeArm
+  - first:
+      1: 100032
+    second: Mutant:RightHand
+  - first:
+      1: 100034
+    second: Mutant:RightHandIndex1
+  - first:
+      1: 100036
+    second: Mutant:RightHandIndex2
+  - first:
+      1: 100038
+    second: Mutant:RightHandIndex3
+  - first:
+      1: 100040
+    second: Mutant:RightHandIndex4
+  - first:
+      1: 100042
+    second: Mutant:RightHandPinky1
+  - first:
+      1: 100044
+    second: Mutant:RightHandPinky2
+  - first:
+      1: 100046
+    second: Mutant:RightHandPinky3
+  - first:
+      1: 100048
+    second: Mutant:RightHandPinky4
+  - first:
+      1: 100050
+    second: Mutant:RightHandThumb1
+  - first:
+      1: 100052
+    second: Mutant:RightHandThumb2
+  - first:
+      1: 100054
+    second: Mutant:RightHandThumb3
+  - first:
+      1: 100056
+    second: Mutant:RightHandThumb4
+  - first:
+      1: 100058
+    second: Mutant:RightLeg
+  - first:
+      1: 100060
+    second: Mutant:RightShoulder
+  - first:
+      1: 100062
+    second: Mutant:RightToe_End
+  - first:
+      1: 100064
+    second: Mutant:RightToeBase
+  - first:
+      1: 100066
+    second: Mutant:RightUpLeg
+  - first:
+      1: 100068
+    second: Mutant:Spine
+  - first:
+      1: 100070
+    second: Mutant:Spine1
+  - first:
+      1: 100072
+    second: Mutant:Spine2
+  - first:
+      1: 100074
+    second: //RootNode
+  - first:
+      4: 400000
+    second: Mutant:Head
+  - first:
+      4: 400002
+    second: Mutant:HeadTop_End
+  - first:
+      4: 400004
+    second: Mutant:Hips
+  - first:
+      4: 400006
+    second: Mutant:LeftArm
+  - first:
+      4: 400008
+    second: Mutant:LeftFoot
+  - first:
+      4: 400010
+    second: Mutant:LeftForeArm
+  - first:
+      4: 400012
+    second: Mutant:LeftHand
+  - first:
+      4: 400014
+    second: Mutant:LeftLeg
+  - first:
+      4: 400016
+    second: Mutant:LeftShoulder
+  - first:
+      4: 400018
+    second: Mutant:LeftToe_End
+  - first:
+      4: 400020
+    second: Mutant:LeftToeBase
+  - first:
+      4: 400022
+    second: Mutant:LeftUpLeg
+  - first:
+      4: 400024
+    second: Mutant:Neck
+  - first:
+      4: 400026
+    second: Mutant:RightArm
+  - first:
+      4: 400028
+    second: Mutant:RightFoot
+  - first:
+      4: 400030
+    second: Mutant:RightForeArm
+  - first:
+      4: 400032
+    second: Mutant:RightHand
+  - first:
+      4: 400034
+    second: Mutant:RightHandIndex1
+  - first:
+      4: 400036
+    second: Mutant:RightHandIndex2
+  - first:
+      4: 400038
+    second: Mutant:RightHandIndex3
+  - first:
+      4: 400040
+    second: Mutant:RightHandIndex4
+  - first:
+      4: 400042
+    second: Mutant:RightHandPinky1
+  - first:
+      4: 400044
+    second: Mutant:RightHandPinky2
+  - first:
+      4: 400046
+    second: Mutant:RightHandPinky3
+  - first:
+      4: 400048
+    second: Mutant:RightHandPinky4
+  - first:
+      4: 400050
+    second: Mutant:RightHandThumb1
+  - first:
+      4: 400052
+    second: Mutant:RightHandThumb2
+  - first:
+      4: 400054
+    second: Mutant:RightHandThumb3
+  - first:
+      4: 400056
+    second: Mutant:RightHandThumb4
+  - first:
+      4: 400058
+    second: Mutant:RightLeg
+  - first:
+      4: 400060
+    second: Mutant:RightShoulder
+  - first:
+      4: 400062
+    second: Mutant:RightToe_End
+  - first:
+      4: 400064
+    second: Mutant:RightToeBase
+  - first:
+      4: 400066
+    second: Mutant:RightUpLeg
+  - first:
+      4: 400068
+    second: Mutant:Spine
+  - first:
+      4: 400070
+    second: Mutant:Spine1
+  - first:
+      4: 400072
+    second: Mutant:Spine2
+  - first:
+      4: 400074
+    second: //RootNode
+  - first:
+      74: 7400000
     second: mixamo.com
+  - first:
+      95: 9500000
+    second: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +266,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Stomach Hit
       takeName: mixamo.com
-      internalID: -203655887218126122
+      internalID: 7400000
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 71
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -48,10 +279,10 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -63,7 +294,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -95,7 +326,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []

@@ -12,11 +12,11 @@ public class PlayerController : MonoBehaviour
     public Transform groundChecker;
     public Transform weaponHolder;
     public Transform weaponDisarmHolder;
+    public bool onGround = false;
 
     Rigidbody rb;
-    bool isGrounded = false;
     RaycastHit hit;
-    Vector3 moveDirection = Vector3.zero;
+    public Vector3 moveDirection = Vector3.zero;
 
     float angle = 0f;
 
@@ -46,20 +46,27 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    public void FrameMove()
+    public void CheckOnGround()
     {
-        isGrounded = Physics.SphereCast(groundChecker.position,
+        onGround = Physics.SphereCast(groundChecker.position,
                                         0.2f,
                                         -transform.up,
                                         out hit,
                                         0.2f,
                                         groundMask,
                                         QueryTriggerInteraction.Ignore);
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump(jumpHeight);
-        }
+        anim.SetBool("OnGround", onGround);
+    }
+
+    // Update is called once per frame
+    public void FrameMove()
+    {
+        CheckOnGround();
+
+        //if (Input.GetButtonDown("Jump") && isGrounded)
+        //{
+        //    Jump(jumpHeight);
+        //}
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         float mouseMoveX = Input.GetAxis("Mouse X");
@@ -97,7 +104,7 @@ public class PlayerController : MonoBehaviour
         moveDirection = Vector3.zero;
     }
 
-    private void Jump(float jumpHeight)
+    public  void Jump(float jumpHeight)
     {
         rb.drag = 0;
         rb.velocity = Vector3.zero;

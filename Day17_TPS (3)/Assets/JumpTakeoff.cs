@@ -2,46 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AxeLocomotionBT : StateMachineBehaviour
+public class JumpTakeoff : StateMachineBehaviour
 {
-    public float moveSpeed = 3f;
-    PlayerController pc;
-
+    bool entered;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc = animator.GetComponent<PlayerController>();
-        pc.moveSpeed = moveSpeed;
+        entered = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.FrameMove();
-
-        if(Input.GetKeyDown(KeyCode.C) && !animator.IsInTransition(0))
+        if(!entered && stateInfo.normalizedTime > 0.86f)
         {
-            animator.SetTrigger("ComboAttack");
+            PlayerController pc = animator.GetComponent<PlayerController>();
+            pc.Jump(1.5F);
+            entered = !entered;
         }
 
-        if (Input.GetKeyDown(KeyCode.V) && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("Attack2");
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && pc.isEquipped && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("DropWeapon");
-        }
-
-        if (Input.GetKeyDown(KeyCode.X) && pc.isEquipped && !pc.isDisarmed && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("Disarm");
-        }
-        if (Input.GetButtonDown("Jump") && pc.onGround && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("Jump");
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

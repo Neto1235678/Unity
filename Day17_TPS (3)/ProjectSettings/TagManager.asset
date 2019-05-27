@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RightWeapon
   - BoxMob
+  - Test
   layers:
   - Default
   - TransparentFX

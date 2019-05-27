@@ -2,45 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AxeLocomotionBT : StateMachineBehaviour
+public class MonChase : StateMachineBehaviour
 {
-    public float moveSpeed = 3f;
-    PlayerController pc;
+    public float chaseSpeed = 2f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        pc = animator.GetComponent<PlayerController>();
-        pc.moveSpeed = moveSpeed;
-    }
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        pc.FrameMove();
+        Transform target = animator.GetComponent<MonsterMove>().target;
+        Vector3 dir = target.position - animator.transform.position;
+        animator.transform.rotation = Quaternion.Slerp(animator.transform.rotation,
+                                                        Quaternion.LookRotation(dir),
+                                                        0.1f);
 
-        if(Input.GetKeyDown(KeyCode.C) && !animator.IsInTransition(0))
+        if(dir.magnitude > 1f)
         {
-            animator.SetTrigger("ComboAttack");
-        }
-
-        if (Input.GetKeyDown(KeyCode.V) && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("Attack2");
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && pc.isEquipped && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("DropWeapon");
-        }
-
-        if (Input.GetKeyDown(KeyCode.X) && pc.isEquipped && !pc.isDisarmed && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("Disarm");
-        }
-        if (Input.GetButtonDown("Jump") && pc.onGround && !animator.IsInTransition(0))
-        {
-            animator.SetTrigger("Jump");
+            animator.transform.Translate(0, 0, chaseSpeed * Time.deltaTime);
         }
     }
 
