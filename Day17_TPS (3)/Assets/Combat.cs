@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobReacions : StateMachineBehaviour
+public class Combat : StateMachineBehaviour
 {
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -11,11 +11,10 @@ public class MobReacions : StateMachineBehaviour
     //}
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).fullPathHash
-                  == Animator.StringToHash("Base Layer Reaction Head Hit"));
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -38,20 +37,11 @@ public class MobReacions : StateMachineBehaviour
     // OnStateMachineEnter is called when entering a state machine via its Entry Node
     override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
     {
-        Debug.Log("Reaction");
-        int r = Random.Range(0, 3);
-        switch(r)
-        {
-            case 0:
-                animator.SetTrigger("Reaction1");
-                break;
-            case 1:
-                animator.SetTrigger("Reaction2");
-                break;
-            case 2:
-                animator.SetTrigger("Reaction3");
-                break;
-        }
+        int r = 1; //Random.Range(0, 2);
+        if (r == 0)
+            animator.SetTrigger("Attack1");
+        else if (r == 1)
+            animator.SetTrigger("JumpAttack");
     }
 
     // OnStateMachineExit is called when exiting a state machine via its Exit Node

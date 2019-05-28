@@ -20,7 +20,9 @@ public class BoxHitReaction : MonoBehaviour
     public void Hurt(int damage, Vector3 hitPoint, Vector3 hitMormal, Vector3 hitDorection)
     {
 
-        if(anim != null)
+        if(anim != null 
+           && !anim.GetCurrentAnimatorStateInfo(0).IsTag("Reaction") 
+           && !anim.IsInTransition(0))
         {
             anim.SetTrigger("Reaction");
         }

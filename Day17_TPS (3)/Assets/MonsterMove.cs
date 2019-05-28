@@ -13,6 +13,9 @@ public enum MoveState
 public class MonsterMove : MonoBehaviour
 {
     public Transform target;
+    public HitBox leftHandHitBox;
+    public HitBox jumpAttcion;
+
     Animator anim;
     Vector3 setposition;
     Vector3 getposition;
