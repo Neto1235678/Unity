@@ -98,7 +98,7 @@ public class HitBox : MonoBehaviour
         }
 
 
-        Debug.Log("OneHit: " + name);
+        //Debug.Log("OneHit: " + name);
         Debug.DrawLine(from, hitPoint, Color.yellow, 2f);
         Debug.DrawLine(hitPoint, hitPoint + hitNormal, Color.magenta, 2f);
         Debug.DrawLine(hitPoint, hitPoint + hitDirection, Color.cyan, 2f);

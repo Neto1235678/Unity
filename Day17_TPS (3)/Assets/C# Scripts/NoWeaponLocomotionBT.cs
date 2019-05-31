@@ -41,6 +41,13 @@ public class NoWeaponLocomotionBT : StateMachineBehaviour
         {
             animator.SetTrigger("ComboAttack");
         }
+        if (Input.GetKeyDown(KeyCode.V) && pc.isDisarmed && !pc.isEquipped && !animator.IsInTransition(0))
+        {
+            Transform weaponDisarmHolder = animator.GetComponent<PlayerController>().weaponDisarmHolder;
+            Transform weapon = weaponDisarmHolder.GetChild(0);
+            animator.SetInteger("HandingWeaponId", weapon.GetComponent<WeaponType>().weaponId);
+            animator.SetTrigger("DrawAttack");
+        }
 
     }
 

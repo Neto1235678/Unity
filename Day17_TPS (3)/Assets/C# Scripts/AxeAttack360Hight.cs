@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitCheck : StateMachineBehaviour, IHitBoxResponder
+public class AxeAttack360Hight : StateMachineBehaviour, IHitBoxResponder
 {
     public int damage = 5;
-    public bool enableMultipleHits;
+    public bool enableMultipleHits = false;
 
     HitBox hitBox;
     Dictionary<int, int> hitobjects;
+    bool entered = false;
 
     public void collisionWith(Collider collider, HitBox hitBox)
     {
@@ -31,8 +31,8 @@ public class HitCheck : StateMachineBehaviour, IHitBoxResponder
                        2f);
 
         BoxHitReaction hr = collider.GetComponentInParent<BoxHitReaction>();
-        hr?.Hurt(damage, hitPoint, hitNormal, hitDirection);
-        
+        hr?.Hurt(damage, hitPoint, hitNormal, hitDirection, ReactionType.Body);
+
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -49,24 +49,26 @@ public class HitCheck : StateMachineBehaviour, IHitBoxResponder
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        if(0.35 <= stateInfo.normalizedTime && stateInfo.normalizedTime <= 0.45)
+        if (0.35 <= stateInfo.normalizedTime && stateInfo.normalizedTime <= 0.45)
+        {
             hitBox.UpdateHitBox();
 
-        if (Input.GetKeyDown(KeyCode.C) && stateInfo.normalizedTime >= 0.5f)
-        {
-            animator.SetTrigger("ComboAttack");
+            if(!entered && stateInfo.normalizedTime >= 0.15f)
+            {
+                CameraShake cs = Camera.main.GetComponent<CameraShake>();
+                cs.enabled = true;
+                cs.StartCoroutine(cs.Shake(0.05f, 0.5f));
+                entered = !entered;
+            }
         }
-        
-            
-
 
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //hitBox.StopCheckingCollsion();
-        animator.SetBool("ComboAttack", false);
+        hitBox.StopCheckingCollsion();
+        entered = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
@@ -81,7 +83,3 @@ public class HitCheck : StateMachineBehaviour, IHitBoxResponder
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
 }
-
-// 무기 단위로 정리, 줍고 차고 빼고 어택까지
-// 코드 정리 및 몹 하나 넣기 판단까지, 필요하면 리액션까지.
-// 점프 공중동작
