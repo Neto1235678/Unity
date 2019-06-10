@@ -50,9 +50,9 @@ public class HitCheck : StateMachineBehaviour, IHitBoxResponder
     {
 
         if(0.35 <= stateInfo.normalizedTime && stateInfo.normalizedTime <= 0.45)
-            hitBox.UpdateHitBox();
+            hitBox.UpdateHitBox();  
 
-        if (Input.GetKeyDown(KeyCode.C) && stateInfo.normalizedTime >= 0.5f)
+        if (Input.GetKeyDown(KeyCode.C) && stateInfo.normalizedTime >= 0.50f)
         {
             animator.SetTrigger("ComboAttack");
         }
@@ -66,7 +66,12 @@ public class HitCheck : StateMachineBehaviour, IHitBoxResponder
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //hitBox.StopCheckingCollsion();
-        animator.SetBool("ComboAttack", false);
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Axe Attack.Attack 360 Hight"))
+        {
+            hitBox.UpdateHitBox();
+        }
+
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
