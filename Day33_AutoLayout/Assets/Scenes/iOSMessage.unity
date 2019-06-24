@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 37093628}
   - component: {fileID: 37093627}
   - component: {fileID: 37093626}
+  - component: {fileID: 37093629}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -264,6 +265,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37093624}
   m_CullTransparentMesh: 0
+--- !u!114 &37093629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37093624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd92fa7a57298a45a28d3f50dc99fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 37093626}
+  chatSystem: {fileID: 1854450553}
 --- !u!1 &57435531
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,26 +487,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6969083768226172177, guid: d7db18d2316c4d848b61a99888ec50e2,
-        type: 3}
-      propertyPath: m_Padding.m_Right
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6969083768226172177, guid: d7db18d2316c4d848b61a99888ec50e2,
-        type: 3}
-      propertyPath: m_ChildAlignment
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6969083768226172177, guid: d7db18d2316c4d848b61a99888ec50e2,
-        type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6969083768226172177, guid: d7db18d2316c4d848b61a99888ec50e2,
-        type: 3}
-      propertyPath: m_ChildForceExpandHeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 524319509956698662, guid: d7db18d2316c4d848b61a99888ec50e2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -556,6 +551,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: '<b>Hello</b> <i>World</i> !<b>Hello</b> <i>World</i> !
+
+        <b>Hello</b> <i>World</i> !<b>Hello</b> <i>World</i> !
+
+        <b>Hello</b> <i>World</i> !<b>Hello</b> <i>World</i> !
+
+        <b>Hello</b> <i>World</i> !<b>Hello</b> <i>World</i> !
+
+        <b>Hello</b> <i>World</i> !<b>Hello</b> <i>World</i> !
 
 '
       objectReference: {fileID: 0}
@@ -960,35 +963,47 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!1 &1634121299 stripped
+--- !u!1 &1534185342
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 524319508555880599, guid: d7db18d2316c4d848b61a99888ec50e2,
-    type: 3}
-  m_PrefabInstance: {fileID: 704612358}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534185343}
+  m_Layer: 0
+  m_Name: GameDateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1534185343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534185342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 74.22057, y: 186.14061, z: -54.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1634121300 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 524319508555880596, guid: d7db18d2316c4d848b61a99888ec50e2,
     type: 3}
   m_PrefabInstance: {fileID: 704612358}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1634121301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634121299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53ffc00f57d541a43b13c65a585940a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1712644187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1105,7 @@ GameObject:
   - component: {fileID: 1854450552}
   - component: {fileID: 1854450551}
   - component: {fileID: 1854450550}
+  - component: {fileID: 1854450553}
   m_Layer: 5
   m_Name: BubbleChat Scroll View
   m_TagString: Untagged
@@ -1187,6 +1203,21 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1854450553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854450548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab8f0762f4b7e94a8d9d61e6f67a7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatPrefab: {fileID: 524319508555880596, guid: d7db18d2316c4d848b61a99888ec50e2,
+    type: 3}
+  content: {fileID: 1266222071}
 --- !u!1 &2109586763
 GameObject:
   m_ObjectHideFlags: 0
